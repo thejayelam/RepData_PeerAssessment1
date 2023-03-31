@@ -28,8 +28,8 @@ mean(TotalStepsPerDay, na.rm=TRUE)
 median(TotalStepsPerDay, na.rm = TRUE)
 
 ```
-## What is the average daily activity pattern?
-```{r Average Daily Activity}
+## What is the average_daily_activity_pattern?
+```{r Average_Daily_Activity}
 averagePattern <- aggregate(x=list(steps=data$steps), by= list(Interval = data$interval), FUN = "mean" , na.rm=TRUE) 
 plot(averagePattern$Interval,averagePattern$steps, type = "l", xlab= "5 minute Interval", ylab="Steps", main="Average Daily Activity Pattern")
 ```
@@ -50,7 +50,7 @@ sum(is.na(data$steps))
 data$steps[is.na(data$steps)] <- mean(data$steps, na.rm = TRUE)
 ```
 # Create a histogram using new data with filled values
-```{r histogram after Imputing missing values}
+```{r histogram_after_Imputing_missing_values}
 Steps_impute <- tapply(data$steps, data$date, FUN = sum)
 hist(Steps_impute, xlab="Steps", main="Total Steps per day", breaks = 10, col = "orange")
 ```
@@ -75,7 +75,7 @@ data$day <- sapply(data$date, FUN = week)
 ```
 
 Plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis)
-```{r time series plot}
+```{r time_series_plot}
 average_day <- aggregate(steps~ interval+day, data = data , mean)
 library(ggplot2)
 ggplot(average_day, aes(interval,steps)) + geom_line() + facet_grid(day~.) + xlab("5-minute interval") + ylab("Number of steps")

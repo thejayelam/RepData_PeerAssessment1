@@ -43,14 +43,14 @@ median(TotalStepsPerDay, na.rm = TRUE)
 ```
 ## [1] 10395
 ```
-## What is the average daily activity pattern?
+## What is the average_daily_activity_pattern?
 
 ```r
 averagePattern <- aggregate(x=list(steps=data$steps), by= list(Interval = data$interval), FUN = "mean" , na.rm=TRUE) 
 plot(averagePattern$Interval,averagePattern$steps, type = "l", xlab= "5 minute Interval", ylab="Steps", main="Average Daily Activity Pattern")
 ```
 
-![](PA1_template_files/figure-html/Average Daily Activity-1.png)<!-- -->
+![](PA1_template_files/figure-html/Average_Daily_Activity-1.png)<!-- -->
 # Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 ```r
@@ -86,7 +86,7 @@ Steps_impute <- tapply(data$steps, data$date, FUN = sum)
 hist(Steps_impute, xlab="Steps", main="Total Steps per day", breaks = 10, col = "orange")
 ```
 
-![](PA1_template_files/figure-html/histogram after Imputing missing values-1.png)<!-- -->
+![](PA1_template_files/figure-html/histogram_after_Imputing_missing_values-1.png)<!-- -->
 
 
 ```r
@@ -126,4 +126,4 @@ library(ggplot2)
 ggplot(average_day, aes(interval,steps)) + geom_line() + facet_grid(day~.) + xlab("5-minute interval") + ylab("Number of steps")
 ```
 
-![](PA1_template_files/figure-html/time series plot-1.png)<!-- -->
+![](PA1_template_files/figure-html/time_series_plot-1.png)<!-- -->
